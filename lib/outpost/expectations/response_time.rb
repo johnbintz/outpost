@@ -23,7 +23,7 @@ module Outpost
         return false if !scout.response_time
 
         rules.all? do |rule, comparison|
-          scout.response_time.send(RESPONSE_TIME_MAPPING[rule], comparison)
+          comparison && scout.response_time.send(RESPONSE_TIME_MAPPING[rule], comparison)
         end
       end
     end
